@@ -1,11 +1,20 @@
 import React from 'react';
 import okLogo from '../../assets/ok.png';
 import deleteLogo from '../../assets/delete.png';
+import { useDispatch } from 'react-redux';
+import { deleteTodo } from '../../redux/actions/todoAction';
+import { TOGGLE_TODO } from '../../redux/types/todoType';
 
 const TodoItem = ({ completed, text, id }) => {
-  const handleToggle = () => {};
 
-  const handleDelete = () => {};
+  const dispatch= useDispatch()
+  const handleToggle = () => {
+    dispatch({type:TOGGLE_TODO,payload:id})
+  };
+
+  const handleDelete = () => {
+  dispatch(deleteTodo(id))
+  };
 
   const styled = {
     textDecoration: completed ? 'line-through' : 'none',
@@ -30,7 +39,7 @@ const TodoItem = ({ completed, text, id }) => {
             src={deleteLogo}
             className="delete-logo"
             alt="delete logo"
-            onClick={handleDelete}
+            onClick={ handleDelete }
           />
         </span>
       </div>
