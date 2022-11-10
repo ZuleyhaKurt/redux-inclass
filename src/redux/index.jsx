@@ -2,8 +2,8 @@ const initialState = {
     counter: 0,
 }
 
-const reducer = (state, action) => {
-    switch (action, type) {
+const reducer = (state=initialState, {type,payload}) => {
+    switch (type) {
         case "INCREMENT":
         return{counter:state.counter+1}
             
